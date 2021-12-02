@@ -1,0 +1,3 @@
+interface AocDay {
+    fun solve()
+}
