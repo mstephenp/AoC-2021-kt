@@ -10,20 +10,25 @@ class Day1 : AocDay {
             .map {
                 Integer.parseInt(it)
             }.apply {
-                println("Part One Answer: ${getIncreaseDepthCount(this)}")
-                println("Part Two Answer: ${getIncreaseDepthCount(this.windowed(3).map { it.sum() })}")
-            }
-    }
+                val increaseCount = this.fold(0 to this[0]) { acc, n ->
+                    when {
+                        n > acc.second -> (acc.first + 1) to n
+                        else -> acc.first to n
+                    }
+                }.first
 
-    private fun getIncreaseDepthCount(depths: List<Int>): Int {
-        var count = 0
-        var previousDepth = depths[0]
-        depths.forEach {
-            if (it > previousDepth) {
-                count += 1
+                val increaseCountWindowed = this.windowed(3)
+                    .map { it.sum() }
+                    .fold(0 to 0) { acc, n ->
+                        when {
+                            acc.second == 0 -> acc.first to n
+                            acc.second < n -> (acc.first + 1) to n
+                            else -> acc.first to n
+                        }
+                    }.first
+
+                println("Increases: $increaseCount")
+                println("Windowed Increases: $increaseCountWindowed")
             }
-            previousDepth = it
-        }
-        return count
     }
 }
