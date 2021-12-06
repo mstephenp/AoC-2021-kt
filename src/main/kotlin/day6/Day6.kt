@@ -49,15 +49,12 @@ class Day6 : AocDay {
             }
 
             // if there are new ones, add a new generation for them
-            // all of them will increase and make more at the same rate
+            // all of them will make more at the same rate
             if (newCount > 0) {
                 generations.add(Generation(newCount, 8))
             }
             dayCount -= 1
         }
-        val generationsCount = generations.sumOf { generation ->
-            generation.count
-        }
-        println("Lanternfish count after $days days: ${firstGeneration.size + generationsCount}")
+        println("Lanternfish count after $days days: ${firstGeneration.size + generations.sumOf(Generation::count)}")
     }
 }
