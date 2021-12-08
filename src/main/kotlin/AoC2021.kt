@@ -5,6 +5,7 @@ import day4.Day4
 import day5.Day5
 import day6.Day6
 import day7.Day7
+import day8.Day8
 
 fun main() {
     dayList().map {
@@ -23,7 +24,8 @@ fun dayList(): List<Pair<String, AocDay>> {
         "Day Four" to Day4(),
         "Day Five" to Day5(),
         "Day Six" to Day6(),
-        "Day Seven" to Day7()
+        "Day Seven" to Day7(),
+        "Day Eight" to Day8()
     )
 }
 
