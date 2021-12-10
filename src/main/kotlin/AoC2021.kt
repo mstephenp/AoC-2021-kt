@@ -1,4 +1,4 @@
-import day9.Day9
+import day10.Day10
 
 fun main() {
     dayList().map {
@@ -19,7 +19,8 @@ fun dayList(): List<Pair<String, AocDay>> {
 //        "Day Six" to Day6(),
 //        "Day Seven" to Day7(),
 //        "Day Eight" to Day8(),
-        "Day Nine" to Day9()
+//        "Day Nine" to Day9(),
+        "Day Ten" to Day10()
     )
 }
 
