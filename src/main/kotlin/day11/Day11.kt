@@ -3,35 +3,40 @@ package day11
 import AocDay
 import java.io.File
 
-//class Octopus(var energyLevel: Int, var zeroThisStep: Boolean = false)
-
 class Day11 : AocDay {
     override fun solve() {
-        File("./src/main/resources/day_eleven_input.txt")
+        val map = File("./src/main/resources/day_eleven_input.txt")
             .readLines()
             .map { it.split("") }
             .map { line -> line.filter { s -> s.isNotEmpty() } }
             .map { it.map { n -> n.toInt() } }
             .map { it.toTypedArray() }
-            .apply {
-                stepFor(this.toTypedArray())
-            }
+            .toTypedArray()
+        stepFor100(map)
+        getFirstSyncAfter100(map)
     }
 
-    private fun stepFor(map: Array<Array<Int>>) {
+    private fun stepFor100(map: Array<Array<Int>>) {
         var n = 0
+        var flashCount = 0
+        while (n < 100) {
+            n++
+            flashCount += step(map)
+        }
+        println("Flash Count: $flashCount")
+    }
+
+    private fun getFirstSyncAfter100(map: Array<Array<Int>>) {
+        var n = 100
         var flashCount = 0
         while (n < 1000) {
             n++
             flashCount += step(map)
-            // for second part - going up to 1000 steps and breaking on a sync
-            // to see first part, limit steps to 100
             if (isFirstSync(map)) {
                 println("First Sync: $n")
                 break
             }
         }
-        println("Flash Count: $flashCount")
     }
 
     private fun step(map: Array<Array<Int>>): Int {
