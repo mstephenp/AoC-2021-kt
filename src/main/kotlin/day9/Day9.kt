@@ -28,7 +28,7 @@ class Day9 : AocDay {
                 markBasinWalls(pointMap)
                 getSumOfRiskLevels(pointMap)
                 countAllBasins(pointMap)
-                
+
                 //printMapForFun(pointMap)
             }
     }
